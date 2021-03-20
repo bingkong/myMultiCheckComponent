@@ -84,6 +84,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
     onSelectedOptionsChange(newOptions);
   }
 
+  /** 清空已经选择的 选项*/
   function clearAllSelected(): void{
     const newOptions = optionItems.map((optiomItem)=>{
 			if (optiomItem.done){
