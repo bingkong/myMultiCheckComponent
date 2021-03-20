@@ -1,10 +1,14 @@
 import './MultiCheck.css';
+import Header from './Header'
+import List from'./List'
+import Footer from'./Footer'
 
 import React from 'react';
 
 export type Option = {
   label: string,
-  value: string
+  value: string,
+  done: boolean,
 }
 
 /**
@@ -22,14 +26,24 @@ export type Option = {
 type Props = {
   label?: string,
   options: Option[],
-  columns?: number,
-  values?: string[]
+  columns: number,
+  values?: string[],
   onChange?: (options: Option[]) => void,
+  addOption:(option: Option)=> void,
+  updateOption:(value : string, done: boolean)=> void,
+  deleteOptionItem: (item : string)=> void,
+  checkAllOptions: (isSelected : boolean)=> void,
+  clearAllSelected:()=> void,
 }
 
 const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
-  return <div className='MultiCheck'>
-    {/* TODO */}
+  const {options,addOption,updateOption,deleteOptionItem} = props;
+  return <div className="todo-container">
+    <div className="todo-wrap">
+      <Header addOption ={addOption}></Header>
+      <List options = {options} updateOption={updateOption} deleteOptionItem={deleteOptionItem}></List>
+      <Footer columns={props.columns} checkAllOptions={props.checkAllOptions} total={options.length} clearAllSelected={props.clearAllSelected}></Footer>
+    </div>
   </div>
 }
 
