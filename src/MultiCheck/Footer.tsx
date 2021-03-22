@@ -8,12 +8,12 @@ type Props = {
 }
 
 const Footer: React.FunctionComponent<Props> = (props): JSX.Element => {
-    //全选checkbox的回调
+    //check all checkbox The callback
 	function handleCheckAll(event : React.ChangeEvent<HTMLInputElement>) : void{
 		props.checkAllOptions(event.target.checked)
     }
 
-    //清除已选项
+    //Clear selected
     function handleClearAllDone(e: React.MouseEvent) : void {
         props.clearAllSelected();
     }
@@ -23,9 +23,9 @@ const Footer: React.FunctionComponent<Props> = (props): JSX.Element => {
                 <input type="checkbox" onChange={handleCheckAll} checked={props.columns === props.total && props.total !== 0 ? true : false}/>
             </label>
             <span>
-                <span>已选择({props.columns})</span> / 全部
+                <span>selected({props.columns})</span> / all
             </span>
-            <button onClick={handleClearAllDone} className="btn btn-danger">清除已选项</button>
+            <button onClick={handleClearAllDone} className="btn btn-danger">Clear selected</button>
         </div>
   }
   

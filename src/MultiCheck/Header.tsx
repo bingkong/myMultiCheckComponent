@@ -8,24 +8,20 @@ type Props = {
 const Header: React.FunctionComponent<Props> = (props): JSX.Element => {
 
     function handleKeyUp(event :React.KeyboardEvent<HTMLInputElement>) : void {
-		//解构赋值获取keyCode,target
 		const {keyCode, currentTarget} = event
-		//判断是否是回车按键
 		if(keyCode !== 13) return
-        //添加的todo名字不能为空
 		if(currentTarget.value.trim() === ''){
-			alert('输入不能为空')
+			alert('Input cannot be empty')
 			return
 		}
-		//准备好一个optionItem对象
+		//Have one read option object
 		const optionItem = {label:currentTarget.value,value: GetRandomNum(100,500),done:false}
-        //将optionItem传递给App
+        //Passed to the App
         props.addOption(optionItem);
-		//清空输入
 		currentTarget.value = ''
 
     }
-    /** * 生成范围随机数 * @Min 最小值 * @Max 最大值 */
+    /** * Generates a range random numbe * @Min least value * @Max maximum value */
     function GetRandomNum(Min :any, Max : any): string {
         var Range = Max - Min;
         var Rand = Math.random();
@@ -34,7 +30,7 @@ const Header: React.FunctionComponent<Props> = (props): JSX.Element => {
 
 
     return <div className="todo-header">
-            <input type="text" onKeyUp={handleKeyUp}  placeholder="请输入你的新增选项名称，按回车键确认"/>
+            <input type="text" onKeyUp={handleKeyUp}  placeholder="Please enter the name of your new option and press Enter to confirm"/>
         </div>
   }
   

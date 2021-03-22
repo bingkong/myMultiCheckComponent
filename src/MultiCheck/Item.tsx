@@ -12,23 +12,23 @@ const Item: React.FunctionComponent<Props> = (props): JSX.Element => {
 
     const [mouse, setMouse] = useState(false)
 
-    //鼠标移入、移出的回调
+    //Mouse - in and mouse - out callbacks
     function handleMouse(flag : boolean) {
         return ()=>{
             setMouse(flag)
         }
     }
 
-    //勾选、取消勾选某一个todo的回调
+    //Check and uncheck callbacks for a particular 
 	function handleCheck(value : string){
 		return (event : React.ChangeEvent<HTMLInputElement>) => {
 			props.updateOption(value ,event.target.checked)
 		}
 	}
 
-    //删除一个多选项
+    //Delete a multi-option
 	function handleDelete(value : string) : void{
-		if(window.confirm('确定删除吗？')){
+		if(window.confirm('Are you sure to delete it?')){
 			props.deleteOptionItem(value)
 		}
 	}
