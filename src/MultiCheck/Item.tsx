@@ -38,7 +38,7 @@ const Item: React.FunctionComponent<Props> = (props): JSX.Element => {
                 <input type="checkbox" value={props.item.value} checked={props.item.done} onChange={handleCheck(props.item.value)}/>
                 <span>{props.item.label}</span>
             </label>
-            <button onClick={()=> handleDelete(props.item.value) }   className="btn btn-danger" style={{display:mouse?'block':'none'}} >删除</button>
+            <button onClick={()=> handleDelete(props.item.value) }   className="btn btn-danger" style={{display:mouse?'block':'none'}} >Delete</button>
         </li>
   }
   

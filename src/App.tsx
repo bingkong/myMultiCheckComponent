@@ -20,18 +20,18 @@ const defaultValues: string[] = [
 
 const App: React.FunctionComponent = (): JSX.Element => {
 
-  /** 初始化默认已经选中的 */
+  /** Initializes what is selected by default */
   defaultOptions.forEach(optionItem =>{
     if (-1 != defaultValues.indexOf(optionItem.value)){
       optionItem.done = true;
     }
   })
 
-  //已经勾选数据的状态
+  //The state of the data is already checked
   const [selectedValues, setSelectedValues] = useState<string[]>(defaultValues);
-  //待选项数据 的状态
+  //The state of the data to be selected
   const [optionItems, setOptionItems] = useState<Option[]>(defaultOptions);
-  //已经选中数量的 状态
+  //The state of a selected quantity
   const [columns, setColumns] = useState<number>(defaultValues.length);
 
   function onSelectedOptionsChange(options: Option[]): void {
@@ -45,13 +45,13 @@ const App: React.FunctionComponent = (): JSX.Element => {
     setColumns(defaultValues.length);
   }
 
-  /** 添加多选项 */
+  /** Add multiple options */
   function addOptionItem(item: Option) : void {
     const newOptions = [item,...optionItems];
     setOptionItems(newOptions);
   }
 
-  /** 更新多选项的勾选状态 */
+  /** Update the checkbox status of multiple options */
   function updateOption(value : string, done: boolean) : void{
     const newOptions = optionItems.map(item => {
       if (item.value == value) {
@@ -65,7 +65,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
     onSelectedOptionsChange(newOptions);
   }
 
-  /** 删除待选项 */
+  /** Delete pending options */
   function deleteOptionItem(value : string) : void{
     const newOptions = optionItems.filter((optiomItem)=>{
 			return optiomItem.value !== value
@@ -74,17 +74,16 @@ const App: React.FunctionComponent = (): JSX.Element => {
     onSelectedOptionsChange(newOptions);
   }
 
-  /** 全选或者全不选*/
+  /** All or none*/
   function checkAllOptions(done: boolean): void{
     const newOptions = optionItems.map((optiomItem)=>{
 			return {...optiomItem,done}
 		})
-    //更新状态
     setOptionItems(newOptions);
     onSelectedOptionsChange(newOptions);
   }
 
-  /** 清空已经选择的 选项*/
+  /** Clears the selected options*/
   function clearAllSelected(): void{
     const newOptions = optionItems.map((optiomItem)=>{
 			if (optiomItem.done){
@@ -99,7 +98,6 @@ const App: React.FunctionComponent = (): JSX.Element => {
   return <div>
     <h1>Multi Check Component</h1>
     <MultiCheck label='my-multi-check' options={optionItems}
-                onChange={onSelectedOptionsChange}
                 values={selectedValues}
                 columns={columns}
                 addOption={addOptionItem}

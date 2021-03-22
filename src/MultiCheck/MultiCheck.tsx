@@ -20,15 +20,12 @@ export type Option = {
  * @param {Option[]} options - options
  * @param {string[]} values - default checked option values
  * @param {number} columns - default value is 1
- * @param {Function} onChange - when checked options are changed,
- *                             they should be passed to outside
  */
 type Props = {
   label?: string,
   options: Option[],
   columns: number,
   values?: string[],
-  onChange?: (options: Option[]) => void,
   addOption:(option: Option)=> void,
   updateOption:(value : string, done: boolean)=> void,
   deleteOptionItem: (item : string)=> void,
