@@ -29,7 +29,7 @@ const Header: React.FunctionComponent<Props> = (props): JSX.Element => {
     }
 
 
-    return <div className="todo-header">
+    return <div className="multi-header">
             <input type="text" onKeyUp={handleKeyUp}  placeholder="Please enter the name of your new option and press Enter to confirm"/>
         </div>
   }

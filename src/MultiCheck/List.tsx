@@ -11,7 +11,7 @@ type Props = {
 
 const List: React.FunctionComponent<Props> = (prop : Props): JSX.Element => {
     const items = prop.options;
-    return <ul className="todo-main">
+    return <ul className="multi-main">
             {
                 items.map( option=>{
                     return <Item key ={option.value} item={option} updateOption={prop.updateOption} deleteOptionItem={prop.deleteOptionItem}></Item>

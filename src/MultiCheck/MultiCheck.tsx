@@ -35,8 +35,8 @@ type Props = {
 
 const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
   const {options,addOption,updateOption,deleteOptionItem} = props;
-  return <div className="todo-container">
-    <div className="todo-wrap">
+  return <div className="multi-container">
+    <div className="multi-wrap">
       <Header addOption ={addOption}></Header>
       <List options = {options} updateOption={updateOption} deleteOptionItem={deleteOptionItem}></List>
       <Footer columns={props.columns} checkAllOptions={props.checkAllOptions} total={options.length} clearAllSelected={props.clearAllSelected}></Footer>

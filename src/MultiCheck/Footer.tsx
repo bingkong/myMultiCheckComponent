@@ -18,7 +18,7 @@ const Footer: React.FunctionComponent<Props> = (props): JSX.Element => {
         props.clearAllSelected();
     }
     
-    return <div className="todo-footer">
+    return <div className="multi-footer">
             <label>
                 <input type="checkbox" onChange={handleCheckAll} checked={props.columns === props.total && props.total !== 0 ? true : false}/>
             </label>
